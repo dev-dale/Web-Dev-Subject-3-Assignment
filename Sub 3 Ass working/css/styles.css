@@ -1,0 +1,137 @@
+:root {
+  --bg-color: #f5f7fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-text: #000000;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Dark mode variables override */
+
+body.dark-mode {
+  --bg-color: #171720;
+  --text-color: #f1f1f1;
+  --card-bg: #2c2c3e;
+  --card-text: #e0e0e0;
+}
+
+/* Dark mode on input fields */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+body.dark-mode input::placeholder {
+  color: #aaa;
+}
+
+body.dark-mode .navbar {
+  background-color: #000000 !important;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #73a5f0, #7b0afc);
+  color: white;
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(135deg, #1f1f29, #3a3a5c);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translate(6px, -8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .card:hover {
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-color: white;
+}
+
+body.dark-mode #dark-mode-toggle {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border-color: white;
+}
+
+/* To Do Styles */
+#todo-input {
+  padding: 10px;
+  width: 250px;
+  margin-right: 10px;
+}
+
+#todo-list {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
+
+#todo-list .list-group-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode list items */
+body.dark-mode #todo-list .list-group-item {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+/* Optional: hover state */
+body.dark-mode #todo-list .list-group-item:hover {
+  background-color: #3a3a3a;
+}
+
+/* Footer */
+footer {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+body.dark-mode footer {
+  color: #aaa;
+}
