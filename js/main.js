@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchDataFromAPI();
+  // fetchDataFromAPI();
   fetchUserProfile();
   setupEditForm();
   setupUploadForm();
@@ -273,17 +273,29 @@ function populateUserTable() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.getElementById("dark-mode-toggle");
+  const table = document.getElementById("userTable"); // Assumes this is your table
+
+  // Load dark mode preference
+  const isDark = localStorage.getItem("dark-mode") === "true";
+  if (isDark) {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+    if (table) table.classList.add("table-dark");
+  } else {
+    toggleBtn.textContent = "🌙 Dark Mode";
+  }
 
   toggleBtn.addEventListener("click", function () {
     const isDarkMode = document.body.classList.toggle("dark-mode");
 
-    // Toggle button text/icon
+    // Update table class
+    if (table) table.classList.toggle("table-dark");
+
+    // Update button icon/text
     toggleBtn.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
 
-    // Select all elements that may have the text-muted class
+    // Update muted text handling
     const mutedElements = document.querySelectorAll(".text-muted");
-
-    // Remove or re-add the text-muted class depending on dark mode state
     mutedElements.forEach(el => {
       if (isDarkMode) {
         el.classList.remove("text-muted");
@@ -291,16 +303,8 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.add("text-muted");
       }
     });
+
+    // Save preference
+    localStorage.setItem("dark-mode", isDarkMode);
   });
-});
-
-// To save Dark mode preferences
-const isDark = localStorage.getItem('dark-mode') === 'true';
-if (isDark) document.body.classList.add('dark-mode');
-toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-
-toggleBtn.addEventListener('click', () => {
-  const isDark = document.body.classList.toggle('dark-mode');
-  localStorage.setItem('dark-mode', isDark);
-  toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
 });
