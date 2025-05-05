@@ -121,9 +121,52 @@ body.dark-mode #todo-list .list-group-item {
   border-color: #444;
 }
 
+/* Dark mode Table items */
+body.dark-mode #userTable tbody tr:hover {
+  background-color: #333;
+}
+body.dark-mode #userTable {
+  border-color: #444;
+  box-shadow: none;
+}
+
 /* Optional: hover state */
 body.dark-mode #todo-list .list-group-item:hover {
   background-color: #3a3a3a;
+}
+
+/* Data-view page */
+#userTable {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#userTable th, #userTable td {
+  padding: 1rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#userTable tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+#userTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-header {
+  background: linear-gradient(to right, #3f87a6, #ebf8e1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */

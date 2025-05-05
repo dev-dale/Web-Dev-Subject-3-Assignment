@@ -273,14 +273,20 @@ function populateUserTable() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.getElementById("dark-mode-toggle");
-  const table = document.getElementById("userTable"); // Assumes this is your table
+  const table = document.getElementById("userTable");
 
   // Load dark mode preference
   const isDark = localStorage.getItem("dark-mode") === "true";
   if (isDark) {
     document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀️ Light Mode";
     if (table) table.classList.add("table-dark");
+    toggleBtn.textContent = "☀️ Light Mode";
+
+    // Update muted text for dark mode
+    document.querySelectorAll(".text-muted").forEach(el => {
+      el.classList.remove("text-muted");
+      el.classList.add("text-light", "opacity-75");
+    });
   } else {
     toggleBtn.textContent = "🌙 Dark Mode";
   }
@@ -288,21 +294,22 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleBtn.addEventListener("click", function () {
     const isDarkMode = document.body.classList.toggle("dark-mode");
 
-    // Update table class
+    // Toggle table styling
     if (table) table.classList.toggle("table-dark");
 
-    // Update button icon/text
-    toggleBtn.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
-
-    // Update muted text handling
-    const mutedElements = document.querySelectorAll(".text-muted");
-    mutedElements.forEach(el => {
+    // Toggle text-muted styles
+    document.querySelectorAll(".text-muted, .text-light.opacity-75").forEach(el => {
       if (isDarkMode) {
         el.classList.remove("text-muted");
+        el.classList.add("text-light", "opacity-75");
       } else {
+        el.classList.remove("text-light", "opacity-75");
         el.classList.add("text-muted");
       }
     });
+
+    // Update toggle button
+    toggleBtn.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
 
     // Save preference
     localStorage.setItem("dark-mode", isDarkMode);
